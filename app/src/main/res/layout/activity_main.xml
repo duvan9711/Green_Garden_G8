@@ -32,7 +32,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:startIconDrawable="@drawable/icon_person"
+        app:startIconDrawable="@drawable/email"
         android:layout_marginTop="20dp"
         app:boxStrokeColor="#3F630D"
         app:endIconMode="clear_text">
@@ -42,8 +42,8 @@
             android:layout_width="360dp"
             android:layout_height="wrap_content"
             android:importantForAutofill="no"
-            android:hint="@string/ETusuario"
-            android:inputType="textPersonName"
+            android:hint="@string/ETcorreo"
+            android:inputType="textEmailAddress"
             tools:ignore="TextContrastCheck"/>
 
     </com.google.android.material.textfield.TextInputLayout>
