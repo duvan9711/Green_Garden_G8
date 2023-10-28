@@ -21,7 +21,11 @@ public class Menu extends AppCompatActivity {
         Button cerrar = findViewById(R.id.cerrar);
         Intent cerrarSesion = new Intent(getApplicationContext(), MainActivity.class);
         Intent consumo = new Intent(getApplicationContext(), Consumo.class);
+        Intent estadistica = new Intent(getApplicationContext(), Estadisticas.class);
+        Intent consejos = new Intent(getApplicationContext(), Consejos.class);
         consum.setOnClickListener(view -> startActivity(consumo));
+        stadist.setOnClickListener(view -> startActivity(estadistica));
+        consejs.setOnClickListener(view -> startActivity(consejos));
         cerrar.setOnClickListener(view -> startActivity(cerrarSesion));
     }
 

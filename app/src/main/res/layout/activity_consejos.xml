@@ -7,6 +7,121 @@
     android:layout_margin="15dp"
     tools:context=".Consejos">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        tools:ignore="UseCompoundDrawables,UselessParent">
+
+        <TextView
+            android:layout_width="180dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/TV_consejos"
+            android:textColor="#3F630D"
+            android:textSize="36sp"
+            tools:ignore="TextSizeCheck" />
+
+        <ImageView
+            android:id="@+id/imag_consejos"
+            android:layout_width="180dp"
+            android:layout_height="120dp"
+            android:src="@drawable/consejos"
+            android:contentDescription="@string/img2_consejo"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
+
+    <ImageView
+        android:id="@+id/consejos_agua"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:src="@drawable/agua"
+        android:contentDescription="@string/img_consejos_descripcion"/>
+
+        <Button
+            android:id="@+id/water"
+            android:layout_width="220dp"
+            android:layout_height="50dp"
+            android:backgroundTint="#3F630D"
+            android:text="@string/btn_agua"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            tools:ignore="DuplicateSpeakableTextCheck" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="25dp">
+
+        <ImageView
+            android:id="@+id/consejos_abono"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:src="@drawable/abonar1"
+            android:contentDescription="@string/img_consejos_descripcion"/>
+
+        <Button
+            android:id="@+id/abonar"
+            android:layout_width="220dp"
+            android:layout_height="50dp"
+            android:backgroundTint="#3F630D"
+            android:text="@string/btn_abono"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            tools:ignore="DuplicateSpeakableTextCheck"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="25dp">
+
+        <ImageView
+            android:id="@+id/consejos_energia"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:src="@drawable/energy"
+            android:contentDescription="@string/img_consejos_descripcion"/>
+
+        <Button
+            android:id="@+id/energia"
+            android:layout_width="220dp"
+            android:layout_height="50dp"
+            android:backgroundTint="#3F630D"
+            android:text="@string/btn_energia"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            tools:ignore="DuplicateSpeakableTextCheck"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/volver"
+        android:layout_width="240dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="35dp"
+        android:layout_gravity="center"
+        android:textColor="#3F630D"
+        android:backgroundTint="#E8AA0B"
+        android:text="@string/btn_regresar"
+        android:textSize="23sp"/>
+
 
 
 </LinearLayout>

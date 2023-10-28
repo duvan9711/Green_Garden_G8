@@ -7,6 +7,10 @@
     <string name="img1_estadistica">Estadistica</string>
     <string name="img2_consejo">Consejos</string>
     <string name="logo">Logotipo</string>
+    <string name="img_consejos_descripcion">Consejos</string>
+    <string name="btn_agua">Agua</string>
+    <string name="btn_abono">Abono</string>
+    <string name="btn_energia">Energía</string>
     <string name="btn_inicio">Iniciar sesión</string>
     <string name="btn_cerrar">Cerrar sesión</string>
     <string name="btn_guardar">Guardar</string>
@@ -33,4 +37,9 @@
     <string name="ET_planta">Elige una planta</string>
     <string name="ET_categoria">Elige una categoria</string>
     <string name="ET_cantidad">Cantidad de consumo</string>
+    <string name="fecha">Fecha</string>
+    <string name="planta">Planta</string>
+    <string name="categoria">Categoría</string>
+    <string name="consumo">Consumo</string>
+    <string name="costo">costo total</string>
 </resources>
