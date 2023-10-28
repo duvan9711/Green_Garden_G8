@@ -105,7 +105,9 @@
             android:hint="@string/ETfecha"
             android:importantForAutofill="no"
             android:inputType="date"
-            tools:ignore="TextContrastCheck" />
+            tools:ignore="TextContrastCheck"
+            android:focusable="false"
+            android:clickable="true"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
