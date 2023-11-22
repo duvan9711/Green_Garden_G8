@@ -1,24 +1,22 @@
 package com.example.green_garden_g3;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.ImageButton;
 
 public class Menu extends AppCompatActivity {
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        ImageButton consum = findViewById(R.id.img_consumo);
-        ImageButton stadist = findViewById(R.id.img_estadistica);
-        ImageButton consejs = findViewById(R.id.img_consejo);
-        Button cerrar = findViewById(R.id.cerrar);
+        CardView consum = findViewById(R.id.CV_consumo);
+        CardView stadist = findViewById(R.id.CV_estadistica);
+        CardView consejs = findViewById(R.id.CV_consejos);
+        CardView cerrar = findViewById(R.id.CV_cerrar);
         Intent cerrarSesion = new Intent(getApplicationContext(), MainActivity.class);
         Intent consumo = new Intent(getApplicationContext(), Consumo.class);
         Intent estadistica = new Intent(getApplicationContext(), Estadisticas.class);

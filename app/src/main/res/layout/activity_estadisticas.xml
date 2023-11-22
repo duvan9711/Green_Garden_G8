@@ -4,15 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_margin="15dp"
     tools:context=".Estadisticas">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="180dp"
         android:orientation="horizontal"
-        android:layout_marginTop="30dp"
-        tools:ignore="UseCompoundDrawables,UselessParent">
+        android:background="@drawable/fondo_superior"
+        tools:ignore="UseCompoundDrawables,UselessParent"
+        android:gravity="center">
 
         <TextView
             android:layout_width="190dp"
@@ -21,13 +21,13 @@
             android:gravity="center"
             android:text="@string/TV_estadistica"
             android:textSize="36sp"
-            android:textColor="#3F630D"
+            android:textColor="@color/white"
             tools:ignore="TextSizeCheck" />
 
         <ImageView
             android:id="@+id/estadist"
             android:layout_width="180dp"
-            android:layout_height="90dp"
+            android:layout_height="100dp"
             android:contentDescription="@string/img1_estadistica"
             android:src="@drawable/estadistica"
             tools:ignore="VisualLintBounds" />
@@ -40,6 +40,8 @@
         android:layout_marginTop="50dp"
         android:background="#D1C4C4"
         android:textAlignment="center"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
         android:gravity="center">
 
         <TableRow
@@ -51,13 +53,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:text="@string/fecha" />
+                android:text="@string/stadisti_a_n" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:text="@string/planta" />
+                android:text="@string/mes" />
 
             <TextView
                 android:layout_width="match_parent"

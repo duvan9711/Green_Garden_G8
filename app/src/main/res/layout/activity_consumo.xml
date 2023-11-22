@@ -5,15 +5,14 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_margin="15dp"
     tools:context=".Consumo">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="180dp"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp"
         android:gravity="center"
+        android:background="@drawable/fondo_superior"
         tools:ignore="UseCompoundDrawables">
 
         <TextView
@@ -21,9 +20,9 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/TV_consumo"
-            android:textColor="#3F630D"
+            android:textColor="@color/white"
             android:textSize="34sp"
-            tools:ignore="TextSizeCheck"/>
+            tools:ignore="TextSizeCheck,TextContrastCheck" />
 
         <ImageView
             android:id="@+id/img_consumo"
@@ -35,6 +34,7 @@
     </LinearLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:layout_marginStart="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:startIconDrawable="@drawable/planta"
@@ -54,6 +54,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:layout_marginStart="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:startIconDrawable="@drawable/lista"
@@ -73,6 +74,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:layout_marginStart="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:startIconDrawable="@drawable/cantidad"
@@ -92,6 +94,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:layout_marginStart="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:startIconDrawable="@drawable/calendar"

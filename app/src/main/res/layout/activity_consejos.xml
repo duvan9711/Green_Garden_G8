@@ -3,15 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_margin="15dp"
     tools:context=".Consejos">
+
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="150dp"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp"
+        android:background="@drawable/fondo_superior"
         tools:ignore="UseCompoundDrawables,UselessParent">
 
         <TextView
@@ -20,96 +21,233 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:text="@string/TV_consejos"
-            android:textColor="#3F630D"
+            android:textColor="#FFFFFF"
             android:textSize="36sp"
-            tools:ignore="TextSizeCheck" />
+            tools:ignore="TextSizeCheck,TextContrastCheck" />
 
         <ImageView
             android:id="@+id/imag_consejos"
             android:layout_width="180dp"
             android:layout_height="120dp"
+            android:layout_marginTop="16dp"
             android:src="@drawable/consejos"
             android:contentDescription="@string/img2_consejo"/>
 
     </LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp">
+        android:layout_margin="15dp"
+        android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/consejos_agua"
-        android:layout_width="140dp"
-        android:layout_height="50dp"
-        android:src="@drawable/agua"
-        android:contentDescription="@string/img_consejos_descripcion"/>
 
-        <Button
-            android:id="@+id/water"
-            android:layout_width="220dp"
-            android:layout_height="50dp"
-            android:backgroundTint="#3F630D"
-            android:text="@string/btn_agua"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="italic"
-            tools:ignore="DuplicateSpeakableTextCheck" />
 
-    </LinearLayout>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/CV_agua"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
+            android:layout_marginTop="10dp"
+            app:cardBackgroundColor="#DDDDDD"
+            tools:ignore="TextSizeCheck">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="25dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/consejos_abono"
-            android:layout_width="140dp"
-            android:layout_height="50dp"
-            android:src="@drawable/abonar1"
-            android:contentDescription="@string/img_consejos_descripcion"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="210dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/img_consumo"
+                    android:padding="10dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/gotaagua"/>
 
-        <Button
-            android:id="@+id/abonar"
-            android:layout_width="220dp"
-            android:layout_height="50dp"
-            android:backgroundTint="#3F630D"
-            android:text="@string/btn_abono"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="italic"
-            tools:ignore="DuplicateSpeakableTextCheck"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_agua"
+                    android:textSize="20sp"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="20dp"
+                    android:textStyle="italic"
+                    android:textColor="@android:color/background_dark" />
 
-    </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="10dp"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="25dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:text="@string/agua"
+                    android:textColor="@android:color/background_dark" />
 
-        <ImageView
-            android:id="@+id/consejos_energia"
-            android:layout_width="140dp"
-            android:layout_height="50dp"
-            android:src="@drawable/energy"
-            android:contentDescription="@string/img_consejos_descripcion"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="10dp"/>
 
-        <Button
-            android:id="@+id/energia"
-            android:layout_width="220dp"
-            android:layout_height="50dp"
-            android:backgroundTint="#3F630D"
-            android:text="@string/btn_energia"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="italic"
-            tools:ignore="DuplicateSpeakableTextCheck"/>
+                <Button
+                    android:id="@+id/btn_agua"
+                    android:layout_width="135dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:backgroundTint="#3F630D"
+                    android:text="@string/conoce_m_s"
+                    tools:ignore="DuplicateSpeakableTextCheck" />
 
-    </LinearLayout>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/CV_electricidad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:foreground="?android:attr/selectableItemBackground"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="10dp"
+                tools:ignore="TextSizeCheck"
+                app:cardBackgroundColor="#DDDDDD"
+                android:layout_marginTop="30dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="260dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:contentDescription="@string/img_consumo"
+                        android:padding="10dp"
+                        android:src="@drawable/energia"
+                        tools:ignore="ImageContrastCheck" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/btn_energia"
+                        android:layout_gravity="start"
+                        android:layout_marginStart="20dp"
+                        android:textSize="20sp"
+                        android:textStyle="italic"
+                        android:textColor="@android:color/background_dark" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_margin="10dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:text="@string/energia"
+                        android:textColor="@android:color/background_dark" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_margin="10dp"/>
+
+                    <Button
+                        android:id="@+id/btn_energia"
+                        android:layout_width="135dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="end"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:backgroundTint="#3F630D"
+                        android:text="@string/conoce_m_s"
+                        tools:ignore="DuplicateSpeakableTextCheck" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/CV_abono"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
+            tools:ignore="TextSizeCheck"
+            app:cardBackgroundColor="#DDDDDD"
+            android:layout_marginTop="30dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="260dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/img_consumo"
+                    android:padding="10dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/abonos" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_abono"
+                    android:layout_gravity="start"
+                    android:textSize="20sp"
+                    android:layout_marginStart="20dp"
+                    android:textStyle="italic"
+                    android:textColor="@android:color/background_dark" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="10dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:text="@string/abono"
+                    android:textColor="@android:color/background_dark" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="10dp"/>
+
+                <Button
+                    android:id="@+id/btn_abono"
+                    android:layout_width="135dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:backgroundTint="#3F630D"
+                    android:text="@string/conoce_m_s" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/volver"
@@ -119,9 +257,11 @@
         android:layout_gravity="center"
         android:textColor="#3F630D"
         android:backgroundTint="#E8AA0B"
+        android:layout_marginBottom="35dp"
         android:text="@string/btn_regresar"
         android:textSize="23sp"/>
 
-
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

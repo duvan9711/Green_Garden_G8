@@ -42,4 +42,15 @@
     <string name="categoria">Categoría</string>
     <string name="consumo">Consumo</string>
     <string name="costo">costo total</string>
+    <string name="descripcion_consumo">Registra datos para conocer tu consumo</string>
+    <string name="descripcion_estadistica">Conoce las estadisticas sobre tu consumo</string>
+    <string name="descripcion_consejos">Tips que puedes aplicar para bajar el consumo</string>
+    <string name="descripcion_cerrar">Oprime si deseas cerrar sesión</string>
+    <string name="conoce_m_s">Conoce más</string>
+    <string name="energia">La eficiencia energética consiste en utilizar la energía de mejor manera, mira más consejos.</string>
+    <string name="abono">El abono nos provee de los nutrientes que le hacen falta a la tierra o sustratos, mira más consejos.</string>
+    <string name="agua">El agua es sinónimo de vida e indispensable en el día a día, sigue los consejos para cuidar mas de este recurso</string>
+    <string name="estad_año">Año</string>
+    <string name="stadisti_a_n">año</string>
+    <string name="mes">mes</string>
 </resources>
