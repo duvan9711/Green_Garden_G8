@@ -53,4 +53,20 @@
     <string name="estad_año">Año</string>
     <string name="stadisti_a_n">año</string>
     <string name="mes">mes</string>
+    <string name="consejos_de_agua">Consejos de agua</string>
+    <string name="detalle_agua">Toma duchas más breves y cierra las llaves mientras te enjabonas o aplicas champú</string>
+    <string name="detalle_agua2">No permitas goteo al cerrar las llaves, remplaza los empaques cada vez que sea necesario.</string>
+    <string name="detalle_agua3">Cierra la llave del agua mientras te cepillas los dientes; de esta manera, una familia de cinco personas puede ahorrar hasta 40 litros de agua al día.</string>
+    <string name="detalle_agua4">Usa la lavadora de ropa sólo con cargas completas, a menos que tenga ajustes para usar menos agua.</string>
+    <string name="consejos_energia">Consejos de energía</string>
+    <string name="detalle_energia">Usa focos ahorradores, iluminan igual que los incandescentes y consumen 75% menos energía</string>
+    <string name="detalle_energia2">Coloca el refrigerador en sitios ventilados y lejos de fuentes de calor como la estufa porque consumirá más energía</string>
+    <string name="detalle_energia3">Apaga focos y desconecta aparatos. Algunos de ellos, aún apagados, consumen energía. Si nadie ve la televisión o escucha la radio, ¡apágalos!</string>
+    <string name="detalle_energia4">Revisa que tu instalación eléctrica no tenga fugas: compruébalo apagando las luces y desconectando todos los aparatos, luego verifica que el medidor no gire. Si lo hace debes revisar la instalación</string>
+    <string name="consejos_de_abono">Consejos de abono</string>
+    <string name="detalle_abono">Es mejor abonar en pequeñas dosis y múltiples ocasiones</string>
+    <string name="detalle_abono2">Los fertilizantes se deben aplicar solo cuando la planta los necesita y cuando las plantas estén lista para absorber los nutrientes con sus raíces.</string>
+    <string name="detalle_abono3">Planifica el tiempo de la fertilización para que coincida con el tiempo en que las raíces estén más activas y el suelo este húmedo</string>
+    <string name="detalle_abono4">Evite fertilizar los árboles y arbusto cuando estos sufren de stress hídrico durante los meses de verano y evite aplicar fertilizante si no tiene una fuente de agua disponible para regar después de fertilizar</string>
+    <string name="total_pagado">Total pagado:</string>
 </resources>
