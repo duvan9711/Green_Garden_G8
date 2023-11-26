@@ -46,6 +46,7 @@ public class RegistrarUsuario extends AppCompatActivity {
             if (validateUser()) {
                 User user = createUser();
                 storageUser(user);
+                sesion.putExtra("idUser", user.getIdUser());
                 Toast.makeText(getApplicationContext(), "Registro exitoso", Toast.LENGTH_LONG).show();
                 try {
                     sleep(500);
