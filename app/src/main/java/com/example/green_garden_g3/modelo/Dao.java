@@ -1,5 +1,7 @@
 package com.example.green_garden_g3.modelo;
 
+import androidx.annotation.NonNull;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -24,10 +26,12 @@ public class Dao {
         return map;
     }
 
-    public ArrayList<Consumption> getConsumptions(File file, String userId) {
+    public ArrayList<Consumption> getConsumptions(File filesDir, String consumptionCategory, String userId) {
         ArrayList<Consumption> list = new ArrayList<>();
 
         try {
+            String filename = getFilename(consumptionCategory);
+            File file = new File(filesDir, filename);
             FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String item;
@@ -72,27 +76,56 @@ public class Dao {
         return map;
     }
 
-    public ArrayList<Statistic> getStatistics(File file, String userId) {
-        ArrayList<Statistic> statistics = new ArrayList<>();
-        ArrayList<Consumption> consumptions = getConsumptions(file, userId);
+    public Statistic getStatistics(File filesDir, String userId) {
         HashMap<String, Category> categoryHashMap = getCategory();
-        DateFormat format = new SimpleDateFormat("yyyy-MMM");
+        Statistic statistics;
+        ArrayList<StatisticConsumption> statisticConsumptions = new ArrayList<>();
+        ArrayList<MaximumConsumption> maximumConsumptions = new ArrayList<>();
 
-        consumptions.sort((a, b)-> a.getCategory().compareTo(b.getCategory()) +
-                a.getConsumptionDate().compareTo(b.getConsumptionDate()));
+        String category = "Abono";
+        setStatistics(filesDir, userId, category, categoryHashMap, statisticConsumptions, maximumConsumptions);
+
+        category = "Agua";
+        setStatistics(filesDir, userId, category, categoryHashMap, statisticConsumptions, maximumConsumptions);
+
+        category = "Energía";
+        setStatistics(filesDir, userId, category, categoryHashMap, statisticConsumptions, maximumConsumptions);
+
+        statistics = new Statistic(statisticConsumptions, maximumConsumptions);
+
+        return statistics;
+    }
+
+    private void setStatistics(File filesDir, String userId, String category, HashMap<String, Category> categoryHashMap, ArrayList<StatisticConsumption> statisticConsumptions, ArrayList<MaximumConsumption> maximumConsumptions) {
+        ArrayList<Consumption> consumptions = getConsumptions(filesDir, category, userId);
+
+        consumptions.sort((a, b) -> a.getConsumptionDate().compareTo(b.getConsumptionDate()));
+
+        ArrayList<StatisticConsumption> staConsumptions = getStatisticConsumption(categoryHashMap, consumptions);
+        MaximumConsumption maxConsumption = getMaximumConsumption(categoryHashMap, staConsumptions);
+
+        statisticConsumptions.addAll(staConsumptions);
+        if (maxConsumption != null) {
+            maximumConsumptions.add(maxConsumption);
+        }
+    }
+
+    private ArrayList<StatisticConsumption> getStatisticConsumption(HashMap<String, Category> categoryHashMap, ArrayList<Consumption> consumptions) {
+        ArrayList<StatisticConsumption> statisticConsumptions = new ArrayList<>();
+        DateFormat format = new SimpleDateFormat("yyyy-MMM");
 
         for (Consumption c : consumptions) {
             String period = format.format(c.getConsumptionDate());
             int year = Integer.parseInt(period.split("-")[0]);
             String month = period.split("-")[1];
-            int i = findDataIndex(statistics, year, month, categoryHashMap.get(c.getCategory()));
+            int i = findDataIndex(statisticConsumptions, year, month, categoryHashMap.get(c.getCategory()));
 
             if (i >= 0) {
-                double quantity = statistics.get(i).getQuantity() + c.getQuantity();
-                statistics.get(i).setQuantity(quantity);
+                double quantity = statisticConsumptions.get(i).getQuantity() + c.getQuantity();
+                statisticConsumptions.get(i).setQuantity(quantity);
             } else {
-                statistics.add(
-                        new Statistic(
+                statisticConsumptions.add(
+                        new StatisticConsumption(
                                 year,
                                 month,
                                 categoryHashMap.get(c.getCategory()),
@@ -103,15 +136,37 @@ public class Dao {
             }
         }
 
-        return statistics;
+        return statisticConsumptions;
     }
 
-    private int findDataIndex(ArrayList<Statistic> statistics, int year, String month, Category category) {
+    private MaximumConsumption getMaximumConsumption(HashMap<String, Category> categoryHashMap, ArrayList<StatisticConsumption> statisticConsumptions) {
+        if (statisticConsumptions.size() > 0) {
+            int year = 1970;
+            String month = "Jun";
+            Category category = categoryHashMap.get("");
+            double quantity = 0;
+
+            for (StatisticConsumption s : statisticConsumptions) {
+                if (s.getQuantity() > quantity) {
+                    year = s.getYear();
+                    month = s.getMonth();
+                    category = s.getCategory();
+                    quantity = s.getQuantity();
+                }
+            }
+
+            return new MaximumConsumption(year, month, category, quantity);
+        }
+
+        return null;
+    }
+
+    private int findDataIndex(ArrayList<StatisticConsumption> statistics, int year, String month, Category category) {
         int index = -1;
         int size = statistics.size();
 
         for (int i = 0; i < size; i++) {
-            Statistic statistic = statistics.get(i);
+            StatisticConsumption statistic = statistics.get(i);
             if (statistic.getYear() == year &&
                     statistic.getMonth().equals(month) &&
                     statistic.getCategory().equals(category)) {
@@ -123,8 +178,10 @@ public class Dao {
         return index;
     }
 
-    public void saveConsumption(File file, Consumption consume) {
+    public void saveConsumption(File filesDir, Consumption consume) {
         try {
+            String filename = getFilename(consume.getCategory());
+            File file = new File(filesDir, filename);
             FileWriter writer = new FileWriter(file, true);
             BufferedWriter bufferedWriter = new BufferedWriter(writer);
             bufferedWriter.write(consume.toString());
@@ -133,6 +190,27 @@ public class Dao {
         } catch (Exception error) {
             error.printStackTrace();
         }
+    }
+
+    @NonNull
+    private static String getFilename(String category) {
+        String filename;
+
+        switch (category) {
+            case "Abono":
+                filename = "fertilizer.txt";
+                break;
+            case "Agua":
+                filename = "water.txt";
+                break;
+            case "Energía":
+                filename = "energy.txt";
+                break;
+            default:
+                filename = "other";
+                break;
+        }
+        return filename;
     }
 
     public Date convertToDate(String value) {

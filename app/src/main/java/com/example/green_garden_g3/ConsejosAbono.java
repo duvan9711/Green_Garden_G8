@@ -12,6 +12,7 @@ public class ConsejosAbono extends AppCompatActivity {
 
     private ActivityConsejosAbonoBinding binding;
     Button regresar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +22,6 @@ public class ConsejosAbono extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         regresar = binding.btnRegresar;
-        Intent retroceder = new Intent(getApplicationContext(), Consejos.class);
-        regresar.setOnClickListener(view -> startActivity(retroceder));
+        regresar.setOnClickListener(view -> finish());
     }
 }

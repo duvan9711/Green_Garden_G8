@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.green_garden_g3.modelo.Category;
 import com.example.green_garden_g3.modelo.Consumption;
@@ -20,9 +21,11 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class Consumo extends AppCompatActivity {
 
+    String userId = "";
     Dao dao = new Dao();
     private HashMap<String, Plant> plants;
     private HashMap<String, Category> category;
@@ -40,10 +43,12 @@ public class Consumo extends AppCompatActivity {
         plants = dao.getPlants();
         category = dao.getCategory();
 
+        Intent receive = getIntent();
+        userId = receive.getStringExtra("idUser");
+
         Button retro = findViewById(R.id.btn_menu);
         Button guardar = findViewById(R.id.btn_guardar);
-        Intent regresar = new Intent(getApplicationContext(), Menu.class);
-        retro.setOnClickListener(view -> startActivity(regresar));
+        retro.setOnClickListener(view -> finish());
 
         planta = findViewById(R.id.ET_planta);
         categoria = findViewById(R.id.ET_categoria);
@@ -67,20 +72,52 @@ public class Consumo extends AppCompatActivity {
         guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                long id = System.currentTimeMillis();
-                String input_date = fecha.getText().toString();
-                String input_plant = planta.getText().toString();
-                String input_category = categoria.getText().toString();
-                double input_quantity = Double.parseDouble(cantidad.getText().toString());
-                double input_cost = category.get(input_category).getCost();
+                if (areValidData()) {
+                    long id = System.currentTimeMillis();
+                    String inputDate = fecha.getText().toString();
+                    String inputPlant = planta.getText().toString();
+                    String inputCategory = categoria.getText().toString();
+                    String inputQuantity = cantidad.getText().toString();
+                    double quantity = Double.parseDouble(inputQuantity);
+                    double totalCost = category.get(inputCategory).getCost();
 
-                saveData(id, input_date, input_plant, input_category, input_quantity, input_cost);
+                    saveData(id, inputDate, inputPlant, inputCategory, quantity, totalCost);
+                    cleanView();
+                    Toast.makeText(getApplicationContext(), "Registro exitoso", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Debe ingresar todos los datos.", Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
 
+    private void cleanView() {
+        fecha.setText("");
+        cantidad.setText("");
+        categoria.setText("");
+        planta.setText("");
+    }
+
+    private boolean areValidData() {
+        boolean state = true;
+
+        if (fecha.getText().toString().isEmpty()) {
+            state = false;
+        }
+        if (planta.getText().toString().isEmpty()) {
+            state = false;
+        }
+        if (categoria.getText().toString().isEmpty()) {
+            state = false;
+        }
+        if (cantidad.getText().toString().isEmpty()) {
+            state = false;
+        }
+
+        return state;
+    }
+
     private void saveData(long id, String inputDate, String inputPlant, String inputCategory, double inputQuantity, double inputCost) {
-        String userId = "i2725r7611";
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Date date = null;
         try {
@@ -91,7 +128,7 @@ public class Consumo extends AppCompatActivity {
 
         Consumption consumption = new Consumption(id, date, inputPlant, inputCategory, inputQuantity, inputCost, userId);
 
-        File file = new File(getFilesDir(), "consumption.txt");
+        File file = getFilesDir();
         dao.saveConsumption(file, consumption);
     }
 }

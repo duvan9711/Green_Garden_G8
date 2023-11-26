@@ -13,6 +13,7 @@ public class ConsejosAgua extends AppCompatActivity {
     private ActivityConsejosAguaBinding binding;
 
     Button regresar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,9 +23,6 @@ public class ConsejosAgua extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         regresar = binding.btnRegresar;
-
-        Intent retro = new Intent(getApplicationContext(), Consejos.class);
-        regresar.setOnClickListener(view -> startActivity(retro));
-
+        regresar.setOnClickListener(view -> finish());
     }
 }

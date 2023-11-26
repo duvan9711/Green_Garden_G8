@@ -69,4 +69,5 @@
     <string name="detalle_abono3">Planifica el tiempo de la fertilización para que coincida con el tiempo en que las raíces estén más activas y el suelo este húmedo</string>
     <string name="detalle_abono4">Evite fertilizar los árboles y arbusto cuando estos sufren de stress hídrico durante los meses de verano y evite aplicar fertilizante si no tiene una fuente de agua disponible para regar después de fertilizar</string>
     <string name="total_pagado">Total pagado:</string>
+    <string name="TCOP0">$ 0</string>
 </resources>

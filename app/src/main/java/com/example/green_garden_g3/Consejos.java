@@ -36,7 +36,6 @@ public class Consejos extends AppCompatActivity {
         Intent consejosAbono = new Intent(getApplicationContext(), ConsejosAbono.class);
         abono.setOnClickListener(view -> startActivity(consejosAbono));
 
-        Intent volver = new Intent(getApplicationContext(), Menu.class);
-        menu.setOnClickListener(view -> startActivity(volver));
+        menu.setOnClickListener(view -> finish());
     }
 }

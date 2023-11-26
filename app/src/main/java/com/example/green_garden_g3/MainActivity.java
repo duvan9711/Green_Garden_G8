@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     Button menu;
     TextView registro;
     EditText email, password;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,28 +43,28 @@ public class MainActivity extends AppCompatActivity {
 
         menu.setOnClickListener(view -> {
             boolean state = false;
-            if (email.getText().toString().isEmpty() || password.getText().toString().isEmpty()){
+            if (email.getText().toString().isEmpty() || password.getText().toString().isEmpty()) {
                 Toast.makeText(getApplicationContext(), "Los campos deben diligenciarse", Toast.LENGTH_LONG).show();
-            }else {
-                for (User i:usersList){
-                    if (i.getEmail().equals(email.getText().toString())){
+            } else {
+                for (User i : usersList) {
+                    if (i.getEmail().equals(email.getText().toString())) {
                         state = true;
-                        if (i.getPassword().equals(password.getText().toString())){
+                        if (i.getPassword().equals(password.getText().toString())) {
                             ingresa.putExtra("idUser", i.getIdUser());
                             Toast.makeText(getApplicationContext(), "Haz iniciado sesión", Toast.LENGTH_LONG).show();
                             try {
                                 sleep(500);
-                            }catch (InterruptedException e){
+                            } catch (InterruptedException e) {
                                 throw new RuntimeException();
                             }
                             startActivity(ingresa);
                             break;
-                        }else {
+                        } else {
                             Toast.makeText(getApplicationContext(), "Datos incorrectos", Toast.LENGTH_LONG).show();
                         }
                     }
                 }
-                if (!state){
+                if (!state) {
                     Toast.makeText(getApplicationContext(), "No se encuentra el usuario", Toast.LENGTH_LONG).show();
                 }
             }
@@ -71,14 +72,14 @@ public class MainActivity extends AppCompatActivity {
         registro.setOnClickListener(view -> startActivity(resgistra));
     }
 
-    public ArrayList<User> listUsers (File fileUser){
+    public ArrayList<User> listUsers(File fileUser) {
         ArrayList<User> list = new ArrayList<>();
         try {
             FileReader fileReader = new FileReader(fileUser);
             BufferedReader reader = new BufferedReader(fileReader);
             String user;
 
-            while ((user=reader.readLine())!=null){
+            while ((user = reader.readLine()) != null) {
                 String[] userArray = user.split(",");
                 String id = userArray[0];
                 String name = userArray[1];
@@ -89,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
                 User userObj = new User(id, name, lastName, email, password);
                 list.add(userObj);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return list;

@@ -17,14 +17,20 @@ public class Menu extends AppCompatActivity {
         CardView stadist = findViewById(R.id.CV_estadistica);
         CardView consejs = findViewById(R.id.CV_consejos);
         CardView cerrar = findViewById(R.id.CV_cerrar);
-        Intent cerrarSesion = new Intent(getApplicationContext(), MainActivity.class);
+
         Intent consumo = new Intent(getApplicationContext(), Consumo.class);
         Intent estadistica = new Intent(getApplicationContext(), Estadisticas.class);
         Intent consejos = new Intent(getApplicationContext(), Consejos.class);
+        Intent receive = getIntent();
+
+        String id = receive.getStringExtra("idUser");
+        consumo.putExtra("idUser", id);
+        estadistica.putExtra("idUser", id);
+
         consum.setOnClickListener(view -> startActivity(consumo));
         stadist.setOnClickListener(view -> startActivity(estadistica));
         consejs.setOnClickListener(view -> startActivity(consejos));
-        cerrar.setOnClickListener(view -> startActivity(cerrarSesion));
+        cerrar.setOnClickListener(view -> finish());
     }
 
-    }
+}
