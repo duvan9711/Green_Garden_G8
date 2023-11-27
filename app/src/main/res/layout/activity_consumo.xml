@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".Consumo">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="180dp"
-        android:orientation="horizontal"
-        android:gravity="center"
         android:background="@drawable/fondo_superior"
+        android:gravity="center"
+        android:orientation="horizontal"
         tools:ignore="UseCompoundDrawables">
 
         <TextView
@@ -28,58 +28,56 @@
             android:id="@+id/img_consumo"
             android:layout_width="120dp"
             android:layout_height="90dp"
-            android:src="@drawable/categoria"
-            android:contentDescription="@string/img_consumo"/>
+            android:contentDescription="@string/img_consumo"
+            android:src="@drawable/categoria" />
 
     </LinearLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_marginStart="15dp"
+        android:id="@+id/tilPlant"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:startIconDrawable="@drawable/planta"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
         app:boxStrokeColor="#3F630D"
-        android:layout_marginTop="20dp">
+        app:errorTextAppearance="@style/error_appearance"
+        app:startIconDrawable="@drawable/planta">
 
-        <EditText
-            android:id="@+id/ET_planta"
+        <AutoCompleteTextView
+            android:id="@+id/autocomplete_plant"
             android:layout_width="360dp"
             android:layout_height="50dp"
-            android:hint="@string/ET_planta"
-            android:importantForAutofill="no"
-            android:inputType="text"
-            android:textColorHint="@color/white"
-            tools:ignore="TextContrastCheck" />
+            android:hint="Ingrese la planta" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_marginStart="15dp"
+        android:id="@+id/tilCategory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:startIconDrawable="@drawable/lista"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
         app:boxStrokeColor="#3F630D"
-        android:layout_marginTop="20dp">
+        app:errorTextAppearance="@style/error_appearance"
+        app:startIconDrawable="@drawable/lista">
 
-        <EditText
-            android:id="@+id/ET_categoria"
+        <AutoCompleteTextView
+            android:id="@+id/autocomplete_category"
             android:layout_width="360dp"
             android:layout_height="50dp"
-            android:hint="@string/ET_categoria"
-            android:importantForAutofill="no"
-            android:inputType="text"
-            android:textColorHint="@color/white"
-            tools:ignore="TextContrastCheck" />
+            android:hint="Ingrese la categoría" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_marginStart="15dp"
+        android:id="@+id/tilQuantity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:startIconDrawable="@drawable/cantidad"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
         app:boxStrokeColor="#3F630D"
-        android:layout_marginTop="20dp">
+        app:errorTextAppearance="@style/error_appearance"
+        app:startIconDrawable="@drawable/cantidad">
 
         <EditText
             android:id="@+id/ET_cantidad"
@@ -94,23 +92,25 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_marginStart="15dp"
+        android:id="@+id/tilDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:startIconDrawable="@drawable/calendar"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
         app:boxStrokeColor="#3F630D"
-        android:layout_marginTop="20dp">
+        app:errorTextAppearance="@style/error_appearance"
+        app:startIconDrawable="@drawable/calendar">
 
         <EditText
             android:id="@+id/ET_fecha"
             android:layout_width="360dp"
             android:layout_height="50dp"
+            android:clickable="true"
+            android:focusable="false"
             android:hint="@string/ETfecha"
             android:importantForAutofill="no"
             android:inputType="date"
-            tools:ignore="TextContrastCheck"
-            android:focusable="false"
-            android:clickable="true"/>
+            tools:ignore="TextContrastCheck" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -120,10 +120,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
+        android:backgroundTint="#E8AA0B"
         android:text="@string/btn_guardar"
-        android:textSize="22sp"
         android:textColor="#3F630D"
-        android:backgroundTint="#E8AA0B"/>
+        android:textSize="22sp" />
 
     <Button
         android:id="@+id/btn_menu"
@@ -131,11 +131,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
+        android:backgroundTint="#E8AA0B"
         android:text="@string/btn_regresar"
-        android:textSize="22sp"
         android:textColor="#3F630D"
-        android:backgroundTint="#E8AA0B"/>
-
-
+        android:textSize="22sp" />
 
 </LinearLayout>

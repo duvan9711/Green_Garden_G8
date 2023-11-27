@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="plants">
+        <item></item>
+        <item>Aguacate</item>
+        <item>Tomate</item>
+        <item>Lechuga</item>
+    </string-array>
+    <string-array name="categories">
+        <item></item>
+        <item>Abono</item>
+        <item>Agua</item>
+        <item>Energía</item>
+    </string-array>
+</resources>
