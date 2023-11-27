@@ -47,7 +47,9 @@
             android:id="@+id/autocomplete_plant"
             android:layout_width="360dp"
             android:layout_height="50dp"
-            android:hint="Ingrese la planta" />
+            android:hint="@string/ingrese_la_planta"
+            tools:ignore="TextContrastCheck"
+            />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -65,7 +67,8 @@
             android:id="@+id/autocomplete_category"
             android:layout_width="360dp"
             android:layout_height="50dp"
-            android:hint="Ingrese la categoría" />
+            android:hint="@string/ingrese_la_categor_a"
+            tools:ignore="TextContrastCheck" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

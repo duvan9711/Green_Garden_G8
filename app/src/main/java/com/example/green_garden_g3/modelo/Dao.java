@@ -1,5 +1,7 @@
 package com.example.green_garden_g3.modelo;
 
+import android.annotation.SuppressLint;
+
 import androidx.annotation.NonNull;
 
 import java.io.BufferedReader;
@@ -11,6 +13,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -99,7 +102,7 @@ public class Dao {
     private void setStatistics(File filesDir, String userId, String category, HashMap<String, Category> categoryHashMap, ArrayList<StatisticConsumption> statisticConsumptions, ArrayList<MaximumConsumption> maximumConsumptions) {
         ArrayList<Consumption> consumptions = getConsumptions(filesDir, category, userId);
 
-        consumptions.sort((a, b) -> a.getConsumptionDate().compareTo(b.getConsumptionDate()));
+        consumptions.sort(Comparator.comparing(Consumption::getConsumptionDate));
 
         ArrayList<StatisticConsumption> staConsumptions = getStatisticConsumption(categoryHashMap, consumptions);
         MaximumConsumption maxConsumption = getMaximumConsumption(categoryHashMap, staConsumptions);
@@ -112,7 +115,7 @@ public class Dao {
 
     private ArrayList<StatisticConsumption> getStatisticConsumption(HashMap<String, Category> categoryHashMap, ArrayList<Consumption> consumptions) {
         ArrayList<StatisticConsumption> statisticConsumptions = new ArrayList<>();
-        DateFormat format = new SimpleDateFormat("yyyy-MMM");
+        @SuppressLint("SimpleDateFormat") DateFormat format = new SimpleDateFormat("yyyy-MMM");
 
         for (Consumption c : consumptions) {
             String period = format.format(c.getConsumptionDate());
@@ -214,10 +217,9 @@ public class Dao {
     }
 
     public Date convertToDate(String value) {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         try {
-            Date date = format.parse(value);
-            return date;
+            return format.parse(value);
         } catch (ParseException e) {
             e.printStackTrace();
         }

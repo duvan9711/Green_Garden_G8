@@ -47,49 +47,61 @@
                 android:id="@+id/tableConsumtion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="50dp"
-                android:layout_marginEnd="15dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="70dp"
                 android:background="#D1C4C4"
-                android:gravity="center"
-                android:textAlignment="center">
+                android:textAlignment="inherit">
 
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="375dp"
-                    android:padding="5dp"
-                    tools:ignore="UselessParent">
+                    android:background="#5DA83D"
+                    tools:ignore="UselessParent"
+                    android:gravity="center_horizontal"
+                    android:padding="7dp">
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:text="@string/stadisti_a_n" />
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="15dp"
+                        android:gravity="center_horizontal"
+                        android:text="@string/stadisti_a_n"
+                        android:textColor="#3E2723" />
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:text="@string/mes" />
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="15dp"
+                        android:text="@string/mes"
+                        android:textColor="#3E2723" />
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:text="@string/categoria" />
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="15dp"
+                        android:text="@string/categoria"
+                        android:textColor="#3E2723" />
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:text="@string/consumo" />
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="15dp"
+                        android:text="@string/consumo"
+                        android:textColor="#3E2723" />
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:text="@string/costo" />
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="15dp"
+                        android:text="@string/costo"
+                        android:textColor="#3E2723" />
 
                 </TableRow>
 
@@ -101,7 +113,8 @@
                 android:layout_margin="20dp"
                 android:background="@drawable/fondo_superior"
                 android:gravity="center_horizontal"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                tools:ignore="TextSizeCheck">
 
                 <TextView
                     android:id="@+id/textView13"
@@ -132,7 +145,7 @@
                 android:layout_width="240dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="150dp"
+                android:layout_marginTop="80dp"
                 android:backgroundTint="#E8AA0B"
                 android:text="@string/btn_regresar"
                 android:textColor="#3F630D"

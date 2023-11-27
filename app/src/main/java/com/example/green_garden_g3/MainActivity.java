@@ -95,4 +95,9 @@ public class MainActivity extends AppCompatActivity {
         }
         return list;
     }
+
+    public void limpiar(){
+        email.setText("");
+        password.setText("");
+    }
 }

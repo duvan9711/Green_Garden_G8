@@ -70,4 +70,6 @@
     <string name="detalle_abono4">Evite fertilizar los árboles y arbusto cuando estos sufren de stress hídrico durante los meses de verano y evite aplicar fertilizante si no tiene una fuente de agua disponible para regar después de fertilizar</string>
     <string name="total_pagado">Total pagado:</string>
     <string name="TCOP0">$ 0</string>
+    <string name="ingrese_la_planta">Ingrese la planta</string>
+    <string name="ingrese_la_categor_a">Ingrese la categoría</string>
 </resources>

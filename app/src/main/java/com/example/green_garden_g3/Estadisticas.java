@@ -2,6 +2,7 @@ package com.example.green_garden_g3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -19,15 +20,16 @@ import java.io.File;
 import java.text.DecimalFormat;
 
 public class Estadisticas extends AppCompatActivity {
+
+
     TableLayout tableConsumptions, tableMaximum;
     DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
     DecimalFormat numberFormat = new DecimalFormat("#,##0");
-
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_estadisticas);
-
         tableConsumptions = findViewById(R.id.tableConsumtion);
         //tableMaximum = findViewById(R.id.tableMaximum);
         Button menu = findViewById(R.id.regresar);
@@ -44,14 +46,13 @@ public class Estadisticas extends AppCompatActivity {
         for (StatisticConsumption s : statistic.getStatisticConsumptions()) {
             fillTable(s);
         }
-/*
-        for (MaximumConsumption s : statistic.getMaximumConsumptions()) {
+/*for (MaximumConsumption s : statistic.getMaximumConsumptions()) {
             fillTable(s);
-        }
-*/
+        }*/
+
         textViewTotal.setText("$ " + numberFormat.format(statistic.getTotalCost()));
     }
-
+    @SuppressLint("SetTextI18n")
     private void fillTable(StatisticConsumption nuevo) {
         TableRow row = new TableRow(this);
         TextView year = new TextView(this);
@@ -66,11 +67,11 @@ public class Estadisticas extends AppCompatActivity {
         quantity.setText(decimalFormat.format(nuevo.getQuantity()));
         cost.setText(numberFormat.format(nuevo.getTotal()));
 
-        year.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-        month.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-        category.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
-        quantity.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
-        cost.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
+        year.setGravity(View.TEXT_ALIGNMENT_GRAVITY);
+        month.setGravity(View.TEXT_ALIGNMENT_GRAVITY);
+        category.setGravity(View.TEXT_ALIGNMENT_GRAVITY);
+        quantity.setGravity(View.TEXT_ALIGNMENT_GRAVITY);
+        cost.setGravity(View.TEXT_ALIGNMENT_GRAVITY);
 
         row.addView(year);
         row.addView(month);
@@ -81,6 +82,7 @@ public class Estadisticas extends AppCompatActivity {
         tableConsumptions.addView(row);
     }
 
+    @SuppressLint("SetTextI18n")
     private void fillTable(MaximumConsumption nuevo) {
         TableRow row = new TableRow(this);
         TextView year = new TextView(this);
@@ -93,10 +95,10 @@ public class Estadisticas extends AppCompatActivity {
         category.setText(nuevo.getCategory().getName());
         quantity.setText(decimalFormat.format(nuevo.getQuantity()));
 
-        year.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-        month.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-        category.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
-        quantity.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
+        year.setTextAlignment(View.TEXT_ALIGNMENT_GRAVITY);
+        month.setTextAlignment(View.TEXT_ALIGNMENT_GRAVITY);
+        category.setTextAlignment(View.TEXT_ALIGNMENT_GRAVITY);
+        quantity.setTextAlignment(View.TEXT_ALIGNMENT_GRAVITY);
 
         row.addView(year);
         row.addView(month);

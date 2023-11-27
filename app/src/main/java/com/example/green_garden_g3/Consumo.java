@@ -2,11 +2,11 @@ package com.example.green_garden_g3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -26,6 +26,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class Consumo extends AppCompatActivity {
 
@@ -42,6 +43,7 @@ public class Consumo extends AppCompatActivity {
     private EditText cantidad;
     private TextInputLayout tilPlant, tilCategoty, tilQuantity, tilDate;
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,11 +67,11 @@ public class Consumo extends AppCompatActivity {
         String[] plantList = plants.keySet().toArray(new String[0]);
         String[] categoryList = categories.keySet().toArray(new String[0]);
 
-        ArrayAdapter<String> plantAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, plantList);
+        ArrayAdapter<String> plantAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, plantList);
         planta = findViewById(R.id.autocomplete_plant);
         planta.setAdapter(plantAdapter);
 
-        ArrayAdapter<String> categoryAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, categoryList);
+        ArrayAdapter<String> categoryAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, categoryList);
         categoria = findViewById(R.id.autocomplete_category);
         categoria.setAdapter(categoryAdapter);
 
@@ -90,25 +92,22 @@ public class Consumo extends AppCompatActivity {
             datePickerDialog.show();
         });
 
-        guardar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (areValidData()) {
-                    long id = System.currentTimeMillis();
-                    String inputDate = fecha.getText().toString();
-                    String inputPlant = planta.getText().toString();
-                    String inputCategory = categoria.getText().toString();
-                    String inputQuantity = cantidad.getText().toString();
-                    double quantity = Double.parseDouble(inputQuantity);
-                    double totalCost = categories.get(inputCategory).getCost();
+        guardar.setOnClickListener(view -> {
+            if (areValidData()) {
+                long id = System.currentTimeMillis();
+                String inputDate = fecha.getText().toString();
+                String inputPlant = planta.getText().toString();
+                String inputCategory = categoria.getText().toString();
+                String inputQuantity = cantidad.getText().toString();
+                double quantity = Double.parseDouble(inputQuantity);
+                double totalCost = Objects.requireNonNull(categories.get(inputCategory)).getCost();
 
-                    saveData(id, inputDate, inputPlant, inputCategory, quantity, totalCost);
-                    cleanView();
-                    setFocusEdit();
-                    Toast.makeText(getApplicationContext(), "Registro exitoso", Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(getApplicationContext(), "Debe ingresar todos los datos.", Toast.LENGTH_LONG).show();
-                }
+                saveData(id, inputDate, inputPlant, inputCategory, quantity, totalCost);
+                cleanView();
+                setFocusEdit();
+                Toast.makeText(getApplicationContext(), "Registro exitoso", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(getApplicationContext(), "Debe ingresar todos los datos.", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -124,6 +123,7 @@ public class Consumo extends AppCompatActivity {
         cantidad.setText("");
         categoria.setText("");
         planta.setText("");
+        planta.requestFocus();
     }
 
     private boolean areValidData() {
@@ -167,8 +167,8 @@ public class Consumo extends AppCompatActivity {
     }
 
     private void saveData(long id, String inputDate, String inputPlant, String inputCategory, double inputQuantity, double inputCost) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        Date date = null;
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Date date;
         try {
             date = dateFormat.parse(inputDate);
         } catch (ParseException e) {
@@ -180,4 +180,6 @@ public class Consumo extends AppCompatActivity {
         File file = getFilesDir();
         dao.saveConsumption(file, consumption);
     }
+
+
 }
